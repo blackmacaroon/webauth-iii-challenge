@@ -8,6 +8,8 @@ exports.up = function(knex, Promise) {
     users
       .string("password", 100)
       .notNullable();
+    users
+      .string("department", 100)
   });
 };
 

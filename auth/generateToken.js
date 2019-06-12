@@ -6,6 +6,7 @@ module.exports = function generateToken(user) {
       const payload = {
             subject: user.id, // who is the token for
             username: user.username, // what's their name
+            departments: ['astronomy', 'herbology', 'transfiguration', 'divination', 'alchemy', 'defense']
             // ... any other information you want to send - remember this will be seen on the client side - NEVER store sensitive information in the payload - keep it light to save bandwidth 
       };
       const options = {

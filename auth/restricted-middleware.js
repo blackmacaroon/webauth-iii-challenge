@@ -7,9 +7,11 @@ module.exports = (req, res, next) => {
       if(token) {
             jwt.verify(token, secrets.jwtSecret, (err, decodeToken) => {
                   if(err) {
+                        // invalid token
                         res.status(401).json({ message: 'Invalid Token'});
                   } else {
-                        req.user = { username: decodeToken.username };
+                        // valid token
+                        req.user = { departments: decodeToken.departments, username: decodeToken.username };
                         next();
                   }
             })
