@@ -1,9 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model');
-const secrets = require('../config/secrets.js');
+const generateToken = require('./generateToken.js');
 
 // endpoints /api/auth
 router.post('/register', (req, res) => {
@@ -33,6 +32,7 @@ router.post('/login', (req, res) => {
                         const token = generateToken(user)
                         res.status(200).json({
                               message: `Hello ${user.username}.`,
+                              // add the newly generated token to the servers response
                               token
                         });
                   } else {
