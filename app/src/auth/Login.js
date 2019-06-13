@@ -3,8 +3,8 @@ import axios from 'axios';
 
 export default class Login extends React.Component {
       state = {
-            username: '',
-            password: ''
+            username: 'sam',
+            password: 'pass'
       }
 
       render() {

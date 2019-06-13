@@ -9,7 +9,9 @@ class UserList extends React.Component {
 
       render() {
             return (
+                  
                   <>
+                  {console.log(this.state.users)}
                   <h2>User List</h2>
                   <ul>
                         {this.state.users.map(u => {
@@ -26,7 +28,7 @@ class UserList extends React.Component {
                   .get(endpoint)
                   .then(res => {
                         console.log('user list', res.data)
-                        this.setState(() => ({users: res.data}));
+                        this.setState(() => ({ users: res.data.users }));
                   })
                   .catch(({ response }) => {
                         console.log('user list error', response)

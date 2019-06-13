@@ -1,14 +1,33 @@
 import React from 'react';
-import './App.css';
+import { Route, NavLink, withRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-     
-      </header>
-    </div>
-  );
+import './App.css';
+import Login from './auth/Login.js';
+import UserList from './users/UserList';
+
+class App extends React.Component {
+  render() {
+    return (
+      <>
+        <header>
+          <nav>
+            <NavLink to='/users'>Users</NavLink>
+            <NavLink to='/login'>Login</NavLink>
+            <button onClick={this.logout}>I'm done here.</button>
+          </nav>
+        </header>
+        <main>
+          <Route path='/users' component={UserList}/>
+          <Route path='/login' component={Login}/>
+        </main>
+      </>
+    );
+  }
+
+  logout = () => {
+    localStorage.removeItem('jwt');
+    this.props.history.push('/login');
+  }
 }
 
-export default App;
+export default withRouter(App);
