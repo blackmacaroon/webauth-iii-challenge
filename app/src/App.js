@@ -2,8 +2,9 @@ import React from 'react';
 import { Route, NavLink, withRouter } from 'react-router-dom';
 
 import './App.css';
-import Login from './auth/Login.js';
-import UserList from './users/UserList';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import UserList from './components/UserList';
 
 class App extends React.Component {
   render() {
@@ -13,12 +14,14 @@ class App extends React.Component {
           <nav>
             <NavLink to='/users'>Users</NavLink>
             <NavLink to='/login'>Login</NavLink>
+            <NavLink to='/signup'>Sign Up</NavLink>
             <button onClick={this.logout}>I'm done here.</button>
           </nav>
         </header>
         <main>
           <Route path='/users' component={UserList}/>
           <Route path='/login' component={Login}/>
+          <Route path='/signup' component={Signup}/>
         </main>
       </>
     );
